@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Objects;
 
 
 /*
@@ -179,7 +180,9 @@ public class Person implements Comparable<Person> {
                 "#" + person.birthYear + "#" + person.job);
     }
 
-
+    /*
+    Przesłonięcie metody compareTo() w celu umożliwienia porównywania elementów m.i.n w TreeSet.
+     */
     @Override
     public int compareTo(Person o) {
         if(this.birthYear>o.birthYear){
@@ -189,7 +192,11 @@ public class Person implements Comparable<Person> {
         }else
             return 0;
     }
-
+    /*
+    Przesłonięcie metod equals(),HashCode() w celu umożliwienia właściwego porównywania obiektów,
+    znajdujących się w różnych typach kolekcji. Szczególnie przydatne w przypadku porównywania
+    tych samych instancji znajdujących się w innych kolekcjach.
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -198,8 +205,8 @@ public class Person implements Comparable<Person> {
         Person person = (Person) o;
 
         if (birthYear != person.birthYear) return false;
-        if (firstName != null ? !firstName.equals(person.firstName) : person.firstName != null) return false;
-        if (lastName != null ? !lastName.equals(person.lastName) : person.lastName != null) return false;
+        if (!Objects.equals(firstName, person.firstName)) return false;
+        if (!Objects.equals(lastName, person.lastName)) return false;
         return job == person.job;
     }
 

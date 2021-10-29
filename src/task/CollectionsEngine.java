@@ -198,15 +198,6 @@ public class CollectionsEngine {
             if (list.containsKey(chosen)) {
                 list.remove(chosen);
                 System.out.println("\nOsoba została usunięta z mapy!");
-                //while (iterator.hasNext()) {
-                //    Map.Entry<String,Person> entry = iterator.next();
-                //    Person person = entry.getValue();
-                //    if (person.equals(list.get(chosen))) {
-                //        iterator.remove();
-                //        System.out.println("\nOsoba zostala usunieta z mapy!");
-                //        break;
-                //    }
-                //}
             } else
                 System.out.println("Brak takiego klucza w mapie!");
         }
